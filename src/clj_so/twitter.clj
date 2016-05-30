@@ -18,8 +18,9 @@
   (loop [qs questions
          published #{}]
     (when-let [q (first qs)]
-      (when-not (contains? published (:question-id q))
-        (statuses-update :oauth-creds my-creds
-                         :params {:status {:content q}}))
+      (when-not (contains? published (:question-id q)) 
+        #_(statuses-update :oauth-creds my-creds
+                           :params {:status (:content q)})
+        (println "tweeted: " (:question-id q) (:content q)))
       (recur (rest qs)
              (conj published (:question-id q))))))
