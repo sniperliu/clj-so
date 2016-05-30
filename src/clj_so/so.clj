@@ -52,14 +52,15 @@
     (transit/reader :json)
     (transit/read)))
 
-(defn get-clj-questions [^org.joda.time.DateTime from
-                         ^org.joda.time.DateTime to]
+(defn get-questions-tagged [^org.joda.time.DateTime from
+                            ^org.joda.time.DateTime to
+                            ^String tag]
   (let [from-long (long (/ (c/to-long from) 1000))
         to-long (long (/ (c/to-long to) 1000))]
     (with-pagination->
       (so-api "questions"
               {"site" "stackoverflow"
-               "tagged" "clojure"
+               "tagged" tag
                "fromdate" from-long
                "todate" to-long})
       :body
@@ -67,6 +68,11 @@
       (ByteArrayInputStream.)
       (transit/reader :json)
       (transit/read))))
+
+(defn get-clj-questions [^org.joda.time.DateTime from
+                         ^org.joda.time.DateTime to]
+  (mapcat #(get-questions-tagged from to %)
+          '("clojure" "clojurescript")))
 
 (defn so-site->tweet [site]
   (map #(hash-map "name" (get % "name")
@@ -78,5 +84,6 @@
 (defn so-question->tweet [q]
   (let [tags (->> (map #(str "#" %) (get q "tags"))
                   (clojure.string/join " "))
-        link (get q "link")]
-    (str tags "\n" link)))
+        link (get q "link")
+        q-id (get q "question_id")]
+    {:question-id q-id :content(str tags "\n" link)}))

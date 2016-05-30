@@ -2,7 +2,8 @@
   (:require [clj-so.so :refer :all]
             [clj-so.twitter :refer :all]
             [clj-time.core :as t]
-            [clj-time.format :as f]))
+            [clj-time.format :as f])
+  (:gen-class))
 
 (def last-so-tweet-time ".last_so_tweet")
 
@@ -24,3 +25,6 @@
     (->> (get-clj-questions from to)
          (map so-question->tweet)
          tweet)))
+
+;; 0 */2 * * * java -jar /opt/clj-so/clj-so-0.1.0-SNAPSHOT-standalone.jar
+

@@ -15,6 +15,11 @@
 (defn tweet
   "Publish clojure questions in stackoverflow"
   [questions]
-  (doseq [q questions]
-    (statuses-update :oauth-creds my-creds
-                     :params {:status q})))
+  (loop [qs questions
+         published #{}]
+    (when-let [q (first qs)]
+      (when-not (contains? published (:question-id q))
+        (statuses-update :oauth-creds my-creds
+                         :params {:status {:content q}}))
+      (recur (rest qs)
+             (conj published (:question-id q))))))
