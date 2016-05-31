@@ -12,8 +12,4 @@
   :plugins [[lein-environ "1.0.3"]]
   :main ^:skip-aot clj-so.core
   :target-path "target/%s"
-  :profiles {:uberjar {:aot :all}
-             :dev {:env {:app-consumer-key "Cm89dBaFy7UCrIzFWAeDCeKiR"
-                         :app-consumer-secret "vN1xPcx0mqDYIyc7bPNEVhWshDlqBQ11nKYJffRpdKschyEhnW"
-                         :user-access-token "736482239630872576-PlUPL84vAbvT2ox30IzYjnrbKW2k7x6"
-                         :user-access-token-secret "5oHuxb4CAlBfLOsvibjXcZFHpshHVG3eayvt8x0KHKx6A"}}})
+  :profiles {:uberjar {:aot :all}})

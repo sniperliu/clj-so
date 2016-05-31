@@ -35,7 +35,7 @@
             page# 1]
        (let [res# (-> (~@(butlast api-call)
                        (merge ~(last api-call) {"page" page#
-                                                "paegsize" 20}))
+                                                "pagesize" 20}))
                       ~@handler)]
          (if return?#
            items#
