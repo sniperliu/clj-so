@@ -20,7 +20,6 @@
     (when-let [q (first qs)]
       (when-not (contains? published (:question-id q)) 
         (statuses-update :oauth-creds my-creds
-                         :params {:status (:content q)})
-        #_(println "tweeted: " (:question-id q) (:content q)))
+                         :params {:status (:content q)}))
       (recur (rest qs)
              (conj published (:question-id q))))))
