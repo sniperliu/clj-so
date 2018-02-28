@@ -1,6 +1,6 @@
 # clj-so
 
-Tweet bot to publish clojure/clojurescript questions on [StackOverflow](https://stackoverflow.com) on [Twitter](https://twitter.com/).
+Tweet bot to publish clojure/clojurescript questions on [StackOverflow](https://stackoverflow.com) to @clojureatso on [Twitter](https://twitter.com/).
 
 ## Usage
 
