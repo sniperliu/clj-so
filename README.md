@@ -49,7 +49,7 @@ aws lambda add-permission \
 
 aws events put-targets \
     --rule clj-so-schedule-rule \
-    --targets '{"Id":"1","Arn":"arn:aws:lambda:ap-southeast-1:348939137225:function:clj-so"}' \
+    --targets '{"Id":"1","Arn":"arn:aws:lambda:ap-southeast-1:123456789:function:clj-so"}' \
     --region ap-southeast-1
 ```
 
