@@ -2,6 +2,8 @@
 
 Tweet bot to publish clojure/clojurescript questions on [StackOverflow](https://stackoverflow.com) to @clojureatso on [Twitter](https://twitter.com/).
 
+<a href="https://twitter.com/clojureatso?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @clojureatso</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
 ## Usage
 
 ```shell
